@@ -39,7 +39,11 @@ DELETE FROM plat WHERE plat.active = 'No'
 DELETE FROM commande WHERE commande.etat = 'Livrée'
 
 -- Ecrivez un script sql permettant d'ajouter une nouvelle catégorie et un plat dans cette nouvelle catégorie.
+use the_district
 
+INSERT INTO categorie (id, libelle, image, active)
+
+INSERT INTO plat (id, categorie_id, libelle, description, prix, image, active)
 
 -- Ecrivez une requête permettant d'augmenter de 10% le prix des plats de la catégorie 'Pizza' 
 UPDATE plat 
