@@ -1,7 +1,7 @@
 -- Afficher la liste des commandes ( la liste doit faire apparaitre la date, les informations du client, le plat et le prix )
 SELECT commande.nom_client, commande.telephone_client, commande.email_client, commande.adresse_client, commande.date_commande, plat.libelle, commande.total 
 FROM commande 
-JOIN plat ON commande.plat_id = plat.id; 
+JOIN plat ON commande.id_plat = plat.id; 
 
 -- Afficher la liste des plats en spécifiant la catégorie
 SELECT plat.libelle, categorie.libelle
