@@ -26,7 +26,9 @@ ORDER BY COUNT(commande_plat.commande_id) DESC;
 SELECT plat.libelle, SUM(commande.total) 
 FROM commande 
 JOIN plat ON plat.id = commande.id_plat 
-GROUP BY commande.id_plat; 
+GROUP BY commande.id_plat
+ORDER BY SUM(commande.total) DESC
+LIMIT 1; 
 
 -- Liste des clients et le chiffre d'affaire généré par client (par ordre décroissant)
 SELECT commande.nom_client, commande.total 
