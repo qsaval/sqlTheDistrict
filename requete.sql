@@ -1,8 +1,7 @@
 -- Afficher la liste des commandes ( la liste doit faire apparaitre la date, les informations du client, le plat et le prix )
 SELECT commande.nom_client, commande.telephone_client, commande.email_client, commande.adresse_client, commande.date_commande, plat.libelle, commande.total 
 FROM commande 
-JOIN commande_plat ON commande.id = commande_plat.commande_id 
-JOIN plat ON commande_plat.plat_id = plat.id; 
+JOIN plat ON commande.plat_id = plat.id; 
 
 -- Afficher la liste des plats en spécifiant la catégorie
 SELECT plat.libelle, categorie.libelle
@@ -17,15 +16,17 @@ WHERE plat.active = 'Yes'
 GROUP BY categorie.libelle; 
 
 -- Liste des plats les plus vendus par ordre décroissant
-SELECT plat.libelle, COUNT(commande_plat.commande_id) 
+SELECT plat.libelle, COUNT(commande.id) 
 FROM plat 
-JOIN commande_plat ON commande_plat.plat_id = plat.id 
+JOIN commande ON commande.plat_id = plat.id 
 GROUP BY plat.libelle 
 ORDER BY COUNT(commande_plat.commande_id) DESC; 
 
 -- Le plat le plus rémunérateur
-SELECT plat.libelle, MAX(plat.prix)
-FROM plat (**)
+SELECT plat.libelle, SUM(commande.total) 
+FROM commande 
+JOIN plat ON plat.id = commande.id_plat 
+GROUP BY commande.id_plat; 
 
 -- Liste des clients et le chiffre d'affaire généré par client (par ordre décroissant)
 SELECT commande.nom_client, commande.total 
