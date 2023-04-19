@@ -53,5 +53,5 @@ VALUES(20, 'nom2', 'une bonne descrition', 25, 'nom2.jpg', 'Yes')
 -- Ecrivez une requête permettant d'augmenter de 10% le prix des plats de la catégorie 'Pizza' 
 UPDATE plat 
 JOIN categorie ON categorie.id = plat.categorie_id
-SET plat.prix = plat.prix *1.01
+SET plat.prix = plat.prix *1.1
 WHERE categorie.libelle = 'Pizza';
